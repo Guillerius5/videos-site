@@ -1,6 +1,7 @@
 import {Anchor, Button, Card, Center, Checkbox, Group, PasswordInput, Text, TextInput, ThemeIcon} from '@mantine/core';
 import {IconAt, IconLock} from '@tabler/icons-react';
 import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 
 export function Login() {
 
@@ -9,6 +10,7 @@ export function Login() {
         e.preventDefault();
         navigate('/dashBoard');
     };
+    const [email, setEmail] = useState('');
 
     return (
         <Center h="100vh" bg="blue.1">
@@ -36,10 +38,13 @@ export function Login() {
 
                 <form onSubmit={handleSubmit}>
                 <TextInput
+                    type={"email"}
                     label="Email Address"
                     placeholder="your@email"
                     leftSection={<IconAt size={16}/>}
                     required
+                    value={email}
+                    onChange={(event) => setEmail(event.currentTarget.value)}
                 />
 
                 <PasswordInput
