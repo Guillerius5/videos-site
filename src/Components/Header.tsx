@@ -51,7 +51,7 @@ export function Header() {
                         </Group>
                     </UnstyledButton>
 
-                    <UnstyledButton onClick={() => navigate('/')}>
+                    <UnstyledButton onClick={handleLogout}>
                         <Group gap={8}>
                             <IconLogout />
                             <Text>Cerrar sesión</Text>

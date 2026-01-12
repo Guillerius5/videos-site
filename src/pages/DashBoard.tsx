@@ -1,34 +1,23 @@
 import {
-    AppShell,
-    Button,
+    ActionIcon,
+    AppShell, Badge,
+    Button, Card,
     Chip,
     Container,
-    Group,
-    Indicator,
+    Group, Image,
     SimpleGrid,
     Text,
-    ThemeIcon,
     Title,
-    UnstyledButton
 } from "@mantine/core";
-import {IconBell, IconHome, IconLogout, IconUpload, IconUser} from "@tabler/icons-react";
-import {useLocation, useNavigate} from "react-router-dom";
+import {IconChartBar, IconEye, IconHeart, IconUpload} from "@tabler/icons-react";
 import {Header} from "../Components/Header.tsx";
+import {videosData} from "../data/videos.ts";
 
 
 export function DashBoard() {
 
 
-    const video = [
-        {title: "Introducción a React", category: "Programación", color: "blue", views: "12.5k"},
-        {title: "Diseño UI/UX Moderno", category: "Diseño", color: "blue", views: "8.3k"},
-        {title: "Marketing digital", category: "Marketing", color: "blue", views: "15.7k"},
-        {title: "Fotografia Profesional", category: "Fotografia", color: "blue", views: "10.2k"},
-        {title: "Desarrollo Web Full Stack", category: "Programación", color: "blue", views: "20.1k"},
-        {title: "Productividad Personal", category: "Productividad", color: "blue", views: "9.8k"},
-        {title: "Inteligencia Artificial", category: "Tecnologia", color: "blue", views: "18.4k"},
-        {title: "Finanzas Personales", category: "Finanzas", color: "blue", views: "11.3k"}
-    ]
+
 
     return (
         <>
@@ -71,7 +60,59 @@ export function DashBoard() {
 
                         <SimpleGrid cols={{base: 1, sm: 2, lg: 4}} spacing="lg" mt="xl">
 
-                        </SimpleGrid>
+                            {videosData.map((item,index)=>(
+                                <Card key={index} shadow="sm" padding="lg" radius="md" withBorder>
+
+
+                                    <Card.Section>
+                                        <Image
+                                            src={item.image}
+                                            height={160}
+                                            alt={item.title}
+                                        />
+                                    </Card.Section>
+
+
+                                    <Group justify="space-between" mt="md" mb="xs">
+                                        <Badge color={item.color} variant="light">
+                                            {item.category}
+                                        </Badge>
+                                    </Group>
+
+
+                                    <Text fw={500}>{item.title}</Text>
+
+                                    <Text size="sm" c="dimmed" mt="sm">
+                                        Aprende los fundamentos y domina esta habilidad desde cero.
+                                    </Text>
+
+
+                                    <Group mt="md" justify="space-between">
+                                        <Group gap={5}>
+                                            <IconEye size={16} color="gray" />
+                                            <Text size="xs" c="dimmed">{item.views}</Text>
+                                        </Group>
+
+                                        <ActionIcon variant="subtle" color="gray">
+                                            <IconHeart size={20} />
+                                        </ActionIcon>
+                                    </Group>
+
+
+                                    <Button
+                                        variant="light"
+                                        color="violet"
+                                        fullWidth
+                                        mt="md"
+                                        radius="md"
+                                        leftSection={<IconChartBar size={16}/>}
+                                    >
+                                        Ver Estadísticas
+                                    </Button>
+
+                                </Card>
+                            ))}
+                            </SimpleGrid>
                     </Container>
                 </AppShell.Main>
 
