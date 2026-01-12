@@ -8,6 +8,7 @@ export function Login() {
     const navigate = useNavigate()
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        localStorage.setItem('userEmail',email);
         navigate('/dashBoard');
     };
     const [email, setEmail] = useState('');
