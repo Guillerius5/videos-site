@@ -9,24 +9,41 @@ import {
     Text,
     Title,
 } from "@mantine/core";
-import {IconChartBar, IconEye, IconHeart, IconUpload} from "@tabler/icons-react";
-import {Header} from "../Components/Header.tsx";
+import {IconChartBar, IconCheck, IconEye, IconHeart, IconUpload} from "@tabler/icons-react";
 import {videosData} from "../data/videos.ts";
+import {Header} from "../components/Header.tsx";
+import {Footer} from "../components/Footer.tsx";
+import {useEffect} from "react";
+import {notifications} from "@mantine/notifications";
+import {useNavigate} from "react-router-dom";
 
 
 export function DashBoard() {
 
 
+    useEffect(() => {
+        notifications.show({
+            title: '¡Bienvenido de nuevo!',
+            message: 'Bienvenido de nuevo',
+            color: 'green',
+            icon: <IconCheck />,
+            autoClose: 4000,
+            withCloseButton: true,
+        });
+    }, []);
 
+    const navigate = useNavigate();
 
     return (
         <>
+
             <AppShell
                 header={{height: 70}}
-                footer={{height: 50}}
+                footer={{height: 180}}
                 padding={"md"}>
 
                <Header/>
+
 
                 <AppShell.Main>
                     <Container size="xl" mt="md">
@@ -41,7 +58,7 @@ export function DashBoard() {
                                 </Text>
                             </div>
 
-                            <Button color={"green"} leftSection={<IconUpload size={20}/>}>
+                            <Button color={"green"} leftSection={<IconUpload size={20} />}>
                                 subir video
                             </Button>
 
@@ -106,19 +123,31 @@ export function DashBoard() {
                                         mt="md"
                                         radius="md"
                                         leftSection={<IconChartBar size={16}/>}
+                                        onClick={() => navigate('/stadistics')}
                                     >
                                         Ver Estadísticas
                                     </Button>
 
                                 </Card>
+
+
+
                             ))}
+
                             </SimpleGrid>
+
+                        <Group justify="center" mt={"xl"}>
+                            <Button color={"blue"} justify={"center"}>
+                                Cargar más contenido
+                            </Button>
+
+                        </Group>
+
+
                     </Container>
                 </AppShell.Main>
 
-                <AppShell.Footer>
-                    el footer
-                </AppShell.Footer>
+                <Footer/>
 
             </AppShell>
         </>
