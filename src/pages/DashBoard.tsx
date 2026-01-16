@@ -11,28 +11,34 @@ import {
 } from "@mantine/core";
 import {IconChartBar, IconCheck, IconEye, IconHeart, IconUpload} from "@tabler/icons-react";
 import {videosData} from "../data/videos.ts";
-import {Header} from "../components/Header.tsx";
-import {Footer} from "../components/Footer.tsx";
-import {useEffect} from "react";
+
+import {useEffect, useRef} from "react";
 import {notifications} from "@mantine/notifications";
 import {useNavigate} from "react-router-dom";
+import {Header} from "../Components/Header.tsx";
+import {Footer} from "../Components/Footer.tsx";
 
 
 export function DashBoard() {
 
+    const notificationShown = useRef(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        notifications.show({
-            title: '¡Bienvenido de nuevo!',
-            message: 'Bienvenido de nuevo',
-            color: 'green',
-            icon: <IconCheck />,
-            autoClose: 4000,
-            withCloseButton: true,
-        });
+
+        if (!notificationShown.current) {
+            notifications.show({
+                title: '¡Bienvenido de nuevo!',
+                message: 'Has iniciado sesión correctamente',
+                color: 'green',
+                icon: <IconCheck/>,
+                autoClose: 4000,
+                withCloseButton: true,
+            });
+            notificationShown.current = true;
+        }
     }, []);
 
-    const navigate = useNavigate();
 
     return (
         <>
@@ -42,7 +48,7 @@ export function DashBoard() {
                 footer={{height: 180}}
                 padding={"md"}>
 
-               <Header/>
+                <Header/>
 
 
                 <AppShell.Main>
@@ -58,7 +64,7 @@ export function DashBoard() {
                                 </Text>
                             </div>
 
-                            <Button color={"green"} leftSection={<IconUpload size={20} />}>
+                            <Button color={"green"} leftSection={<IconUpload size={20}/>}>
                                 subir video
                             </Button>
 
@@ -75,9 +81,9 @@ export function DashBoard() {
 
                         </Group>
 
-                        <SimpleGrid cols={{base: 1, sm: 2, lg: 4}} spacing="lg" mt="xl">
+                        <SimpleGrid spacing="lg" mt="xl">
 
-                            {videosData.map((item,index)=>(
+                            {videosData.map((item, index) => (
                                 <Card key={index} shadow="sm" padding="lg" radius="md" withBorder>
 
 
@@ -106,12 +112,12 @@ export function DashBoard() {
 
                                     <Group mt="md" justify="space-between">
                                         <Group gap={5}>
-                                            <IconEye size={16} color="gray" />
+                                            <IconEye size={16} color="gray"/>
                                             <Text size="xs" c="dimmed">{item.views}</Text>
                                         </Group>
 
                                         <ActionIcon variant="subtle" color="gray">
-                                            <IconHeart size={20} />
+                                            <IconHeart size={20}/>
                                         </ActionIcon>
                                     </Group>
 
@@ -131,10 +137,9 @@ export function DashBoard() {
                                 </Card>
 
 
-
                             ))}
 
-                            </SimpleGrid>
+                        </SimpleGrid>
 
                         <Group justify="center" mt={"xl"}>
                             <Button color={"blue"} justify={"center"}>

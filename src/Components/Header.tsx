@@ -1,4 +1,4 @@
-import { AppShell, Group, Indicator, Text, ThemeIcon, UnstyledButton } from "@mantine/core";
+import {AppShell, Container, Group, Indicator, Text, ThemeIcon, UnstyledButton} from "@mantine/core";
 import { IconBell, IconHome, IconLogout, IconUser } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +16,9 @@ export function Header() {
     };
 
     return (
+
         <AppShell.Header>
+            <Container size="xl" mt="md">
             <Group h="100%" px="md" justify="space-between">
 
 
@@ -60,6 +62,9 @@ export function Header() {
                 </Group>
 
             </Group>
+            </Container>
+
         </AppShell.Header>
+
     );
 }
