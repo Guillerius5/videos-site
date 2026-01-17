@@ -5,7 +5,9 @@ import {
     Chip,
     Container,
     Group, Image,
+
     SimpleGrid,
+
     Text,
     Title,
 } from "@mantine/core";
@@ -15,8 +17,11 @@ import {videosData} from "../data/videos.ts";
 import {useEffect, useRef} from "react";
 import {notifications} from "@mantine/notifications";
 import {useNavigate} from "react-router-dom";
-import {Header} from "../Components/Header.tsx";
-import {Footer} from "../Components/Footer.tsx";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
+
+
+
 
 
 export function DashBoard() {
@@ -64,7 +69,11 @@ export function DashBoard() {
                                 </Text>
                             </div>
 
-                            <Button color={"green"} leftSection={<IconUpload size={20}/>}>
+                            <Button
+                                color="green"
+                                leftSection={<IconUpload size={20} />}
+                                onClick={() => navigate('/subir-video')}
+                            >
                                 subir video
                             </Button>
 
@@ -81,7 +90,7 @@ export function DashBoard() {
 
                         </Group>
 
-                        <SimpleGrid spacing="lg" mt="xl">
+                        <SimpleGrid cols={{lg: 4 }} spacing="lg" mt="xl">
 
                             {videosData.map((item, index) => (
                                 <Card key={index} shadow="sm" padding="lg" radius="md" withBorder>

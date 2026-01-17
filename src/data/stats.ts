@@ -8,12 +8,12 @@ export const datosStatus=[
 ]
 export const vistasDia=[
     {dia:'Lun', vistas:4000},
-    {dia:'Mar', vistas:4000},
-    {dia:'Mie', vistas:4000},
-    {dia:'Jue', vistas:4000},
-    {dia:'Vie', vistas:4000},
-    {dia:'Sab', vistas:4000},
-    {dia:'Dom', vistas:4000},
+    {dia:'Mar', vistas:5000},
+    {dia:'Mie', vistas:7000},
+    {dia:'Jue', vistas:6000},
+    {dia:'Vie', vistas:8000},
+    {dia:'Sab', vistas:12000},
+    {dia:'Dom', vistas:10000},
 ];
 
 export const retencionAudiencia=[
@@ -28,17 +28,17 @@ export const retencionAudiencia=[
 ];
 
 export const fuenteTrafico=[
-    {nombre:'Busqueda',valor:'35%',color:'blue'},
-    {nombre:'otros',valor:'5%',color:'yellow'},
-    {nombre:'Redes Sociales',valor:'12%',color:'green-'},
-    {nombre:'Directo',valor:'20%',color:'red'},
-    {nombre:'Sugeridos',valor:'28%',color:'purple-'}
+    {name:'Busqueda',value:35,color:'blue'},
+    {name:'otros',value:5,color:'yellow'},
+    {name:'Redes Sociales',value:12,color:'green'},
+    {name:'Directo',value:20,color:'red'},
+    {name:'Sugeridos',value:28,color:'purple'}
 
 ]
 
 export const Dispositivo=[
-    {nombre:'Movil',valor:'58%',color:'blue'},
-    {nombre:'Tablet',valor:'10%',color:'red'},
-    {nombre:'Desktop',valor:'32%',color:'purple'}
+    {name:'Movil',value:58,color:'blue'},
+    {name:'Tablet',value:10,color:'red'},
+    {name:'Desktop',value:32,color:'purple'}
 ]
 
